@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from projects import GetProjectResponse
 
 # Create
 
@@ -21,6 +20,6 @@ class GetUserResponse(BaseModel):
     email: str
     username: str
     
-# Update
+# Update - N/A
 
-# Delete
+# Delete - N/A
