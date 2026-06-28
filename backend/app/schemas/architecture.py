@@ -3,7 +3,7 @@ from pydantic import BaseModel
 # Create
 
 class CreateArchitectureRequest(BaseModel):
-    architecture_diagram_xml: str
+    xml_diagram: str
 
 class CreateArchitectureResponse(BaseModel):
     id: str
@@ -15,13 +15,13 @@ class GetArchitectureRequest(BaseModel):
     id: str
 
 class GetArchitectureResponse(BaseModel):
-    architecture_diagram_xml: str
+    xml_diagram: str
 
 # Update
 
 class UpdateArchitectureRequest(BaseModel):
     id: str
-    architecture_diagram_xml: str
+    xml_diagram: str
 
 class UpdateArchitectureResponse(BaseModel):
     message: str
