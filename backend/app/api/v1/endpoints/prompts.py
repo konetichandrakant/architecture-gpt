@@ -1,6 +1,7 @@
 from fastapi import APIRouter
-from schemas.prompts import PostPromptRequest, PostPromptResponse
-from services.prompts import PromptService
+
+from app.schemas.prompts import PostPromptRequest, PostPromptResponse
+from app.services.prompts import PromptService
 
 router = APIRouter()
 

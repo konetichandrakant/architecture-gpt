@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.routes import router
+from app.api.v1.api import api_router
 from app.config import settings
 
 app = FastAPI(title=settings.app_name, docs_url="/docs", redoc_url="/redoc")
@@ -14,4 +14,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(router)
+app.include_router(api_router, prefix="/api/v1")
