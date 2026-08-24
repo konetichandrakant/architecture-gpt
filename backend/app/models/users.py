@@ -1,10 +1,13 @@
 from sqlalchemy import Integer, String
-from sqlalchemy.orm import Mapped, mapped_column, declarative_base
+from sqlalchemy.orm import Mapped, mapped_column
 
-Base = declarative_base()
+from app.config.database import Base
+
 
 class User(Base):
-    id: Mapped[int] = mapped_column(Integer, primary_key = True)
-    name: Mapped[String] = mapped_column(String)
-    email: Mapped[String] = mapped_column(String)
-    password: Mapped[String] = mapped_column(String)
+    __tablename__ = "users"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String)
+    email: Mapped[str] = mapped_column(String, unique=True)
+    password: Mapped[str] = mapped_column(String)

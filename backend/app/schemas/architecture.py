@@ -8,19 +8,22 @@ class CreateArchitectureRequest(BaseModel):
 class CreateArchitectureResponse(BaseModel):
     id: str
     message: str
-    
+
 # Read
 
 class GetArchitectureRequest(BaseModel):
     id: str
 
 class GetArchitectureResponse(BaseModel):
+    id: int
     xml_diagram: str
+    quality_score: int | None = None
+    model_used: str | None = None
+    iterations: int = 0
 
 # Update
 
 class UpdateArchitectureRequest(BaseModel):
-    id: str
     xml_diagram: str
 
 class UpdateArchitectureResponse(BaseModel):
