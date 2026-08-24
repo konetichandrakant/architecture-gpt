@@ -23,7 +23,8 @@ class LLMSettings(BaseSettings):
     num_retries: int = 2
     cooldown_time: int = 30
 
-    model_config = {"env_file": ".env", "env_prefix": "LLM_"}
+    # .env is shared with the app settings, so ignore keys that are not ours
+    model_config = {"env_file": ".env", "env_prefix": "LLM_", "extra": "ignore"}
 
 
 llm_settings = LLMSettings()

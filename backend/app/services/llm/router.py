@@ -66,6 +66,11 @@ class ModelRouter:
     """
 
     def __init__(self):
+        # providers disagree on sampling params (claude-5 and gpt-5 only
+        # accept temperature=1), so drop params a provider rejects instead
+        # of failing the routed call
+        litellm.drop_params = True
+        litellm.suppress_debug_messages = True
         self._router = Router(
             model_list=self._build_model_list(),
             routing_strategy="usage-based-routing",

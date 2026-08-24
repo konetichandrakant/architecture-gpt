@@ -18,7 +18,8 @@ class Settings(BaseSettings):
     generation_quality_target: int = 80
     generation_max_iterations: int = 2
 
-    model_config = {"env_file": ".env"}
+    # ignore LLM_* and provider keys that share the same .env file
+    model_config = {"env_file": ".env", "extra": "ignore"}
 
 
 settings = Settings()
