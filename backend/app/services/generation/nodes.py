@@ -35,7 +35,7 @@ def _record(state: GenerationState, step: str, result: RouteResult) -> dict[str,
     }
 
 
-def _extract_mxgraph(text: str) -> str:
+def extract_mxgraph(text: str) -> str:
     """Pull the mxGraphModel document out of a model reply."""
     match = re.search(r"<mxGraphModel.*</mxGraphModel>", text, re.DOTALL)
     if match:
@@ -74,7 +74,7 @@ def _generate(state: GenerationState, improve: bool) -> dict[str, Any]:
         prompts.build_architecture_messages(state["requirements"], previous_xml, critique),
         temperature=0.3,
     )
-    architecture_xml = _extract_mxgraph(result.content)
+    architecture_xml = extract_mxgraph(result.content)
     if "<mxGraphModel" not in architecture_xml:
         raise ValueError("architecture model did not return a draw.io mxGraphModel document")
 
